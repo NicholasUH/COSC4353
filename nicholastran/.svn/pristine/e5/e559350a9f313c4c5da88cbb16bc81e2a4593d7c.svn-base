@@ -1,0 +1,13 @@
+x canary test
+
+get_factors(6) returns [1, 2, 3, 6]
+get_factors(5) returns [1, 5]
+
+is_perfect_number_two_times(6, 12) returns True
+is_perfect_number_two_times(5, 12) returns False
+
+is_perfect_number(6) returns True
+is_perfect_number(5) returns False
+
+get_all_perfect_numbers(500) returns [6, 28, 496]
+get_all_perfect_numbers(1) returns []

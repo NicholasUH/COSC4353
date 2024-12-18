@@ -1,0 +1,4 @@
+from get_perfect_number import is_perfect_number
+
+def get_number_of_perfect_numbers(input_num):
+    return len([num for num in range(1, input_num) if is_perfect_number(num)])

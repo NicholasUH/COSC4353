@@ -1,0 +1,75 @@
+Assign4: Due 11:59PM CT April 19
+
+***Please review the top part of ../hw1/hw1.txt***
+***Your chance of success greatly increases if you start very early. Your chance of failure increases if you start late. Please use as many reviews as you possibly can.***
+
+Please bring forward the practices, techniques, and tools you have learned so far. This includes: 
+Good code quality
+Lightweight design
+Minimum code
+Automated testing                                                         
+Code coverage
+Build files (I created them for you in assign1, but it's your turn now to practice and learn further)
+Change build.sh in your repository to point to assign4 instead of assign3
+
+Please take small steps. Start with a canary test and one or two more tests.
+List your tests in a file named tests.txt. Check them off with a x as you 
+implement them. Remember to ask for a review each day. The earlier you start,
+the earlier you finish, and less the risk. If you start late, you carry a 
+bigger risk. I sincerely hope you will start early and come out winning in 
+this course.
+
+Using test first development, write the program described below.
+
+An agency specializes in evaluating job applicants. Different clients using their service will want applicants to be evaluated based on different criteria. New criteria not known today may be added in the future. Some existing criteria may also be removed at any time. Not all available criteria will be used by every client.
+
+Examples of criteria are employment status, criminal records, credit records, Security clearance, etc. For example, the employment status criterion will return a response of its evaluation with a status and reason, like so: pass, "applicant has had previous employment." As another example, the criminal records criterion may respond fail, "person has done time for bank robbery."
+
+For the purpose of this assignment, we will fake some response in each of the criteria when an evaluation is requested for applicants.
+
+Write a console application that will allow the user of the program to first choose the criteria they want to use, from a dynamic list of available criteria. Then evaluate the application for all the selected criteria. Finally the program will print the total result, pass or fail (pass only if all criteria passed) and provide a summary of the evaluations for that applicant. 
+
+Once you complete coding, please answer the following:
+
+1. What design principles did you use in this assignment? Discuss.
+
+Some design principles we used for this assignment are SRP, SoC, OCP, and YAGNI.
+
+SRP was used to make sure each file had a singular purpose and did not do more than it needed to. For example, we separated criteria functions into separate files to be clear and specific. 
+
+This also plays into SoC, where we separate files based on concerns. An example of this is when we separated the files like application.py, which holds the Application class whose concern was data storage, whereas the classes that use it are concerned with logic.
+
+Our application class is an excellent example of this design principle for OCP. Because we implemented it as a data class, we can modify and extend the fields later without changing the class's implementation.
+
+YAGNI was also used during assign4. As we implemented the test cases, we did not write and got rid of any unnecessary code, making later changes much simpler.
+
+2. Any surprises or things that you did not expect?
+
+I did not expect to deal with the os and importlib Python modules for the fetch_criterion and fetch_critiera functions. At first, I struggled to achieve those two functionalities in a scalable way as more criteria were added. Those modules helped me incredibly by finding and using the files available.
+
+I was also surprised at how the Application class was implemented and used for this assignment. The Application class was more of a data-holding class than a functional class. We did not create any functions for the class other than the Python magic methods from the data class decorator.
+
+3. What design patterns did you use in this assignment? Discuss.
+
+One design pattern used was the factory method for the fetch_criterion function. We implemented this pattern by defining the function with the criteria name parameter. This parameter will assist in returning the corresponding file and the evaluate_application() function within it. This makes adding criteria simpler and avoids modifying any existing code.
+
+Another design pattern used was the facade pattern through the process_application function. The design pattern hid the complexity of the function, evaluating multiple criteria and making the function much more straightforward to work with.
+
+The iterator pattern can be seen through the fetch_criteria function. Using a loop to iterate through the files in the criteria folder, we can maintain the separation of concerns between the criteria files and SRP by keeping the function’s sole purpose to fetch the criteria names as strings.
+
+Throughout the evaluator_gui file, we see the compose method pattern, where we break down functions into smaller ones to prevent longer functions cause they are harder to maintain. One example is for creating applications. First, we called the create_application() function, which returns the application object. Before returning, it calls the get_application_info function, which gets the (True/False) input for each application class attribute. For every input we take, we call the validate_application_info function that checks to make sure the input is true or false. Then, the get_application_info function returns a dictionary with a field mapped to input, giving it to the original create_application function to unpack.
+
+The final design pattern used is the strategy pattern. This pattern involves defining related functions and making them interchangeable at runtime. This assignment shows this in the evaluate_application functions created in the criteria files. When the process_application function is called, it takes an application and applies each criteria function or strategy. This approach allows dynamic application evaluation, making it more flexible and maintainable.
+
+Total [100]: 97
+Program works as expected [20]:
+All tests pass [10]:
+Test quality [10]:
+Code coverage [10]:
+Design quality [10]:
+Design for extensibility without code change (DRY + OCP) [10]:
+Program handles new criteria well[10]:
+Code quality [10]:
+
+Response to questions [10]: -3
+A major aspect of the design was the user of a decorator like pattern.

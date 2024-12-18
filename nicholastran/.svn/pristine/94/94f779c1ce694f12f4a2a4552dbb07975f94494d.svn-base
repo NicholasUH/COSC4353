@@ -1,0 +1,9 @@
+import unittest
+from src.sample import func
+
+class Test(unittest.TestCase):
+    def test_canary(self):
+        self.assertTrue(True)
+    
+    def test_func(self):
+        self.assertEqual('hello world', func())

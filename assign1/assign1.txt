@@ -1,0 +1,48 @@
+Assign1: Due 11:59PM CT February 23
+
+***Please review the top part of ../hw1/hw1.txt***
+***Your chance of success greatly increases if you start very early. Your chance of failure increases if you start late. Please use as many reviews as you possibly can.***
+
+Using Test First Development (no code without test first) let's implement the problem designed in hw2. Feel free to evolve that design and use judgment to make changes based on the improved understanding and learning. You are not required to use any of the design idea or languages you mentioned in hw2, apply decisions based on your renewed learnings.
+
+Please take small steps and ask for frequent reviews.
+
+First start with a tests list (tests.txt) and a canary test. Implement at most two more tests and minimum code to make those tests to pass. This is a great first step to complete and ask for a review.
+
+After completing the assignment (and only after) let's answer the following questions:
+
+1. What did you learn mainly in this assignment?
+
+In this assignment, the main thing we learned was test-driven development. We found that implementing code test case by test case reduced the amount of code overall and the number of bugs and errors in our code. Developing using test cases made our code a lot simpler and more concise than if we had not done TDD.
+
+Through TDD, we also learned the value of writing minimal code. Our initial impulse with the assignment was to write a lot of code at once though at the time, we did not think it was a lot. By writing minimal code, we can focus on a single concern at a time, reducing the complexity of our code and making it easier to address the concern promptly.
+
+Another thing we learned was applying the Single Level of Abstraction Principle, or SLAP. Making our functions very simple and serving a singular purpose made our code more readable, easier to adjust when changes needed to be added, and a lot less complex. Since we are working as a pair on a single file at a time, SLAP helped us to more easily read and understand code written by our partner.
+
+2. How is the current design different, if at all, from the strategic design created in hw2?
+
+Our current design differed a bit from the original design as we made critical decisions as the program was being developed. 
+
+A change that we had is that we never had a Row or a Cell class that communicated with the WordleGrid(). Instead, we just have the WordleGrid(), changed the name to WordleGui, and had the Row and Cell class just be a simple 6x5 matrix as a substitute.
+
+3. Were there any surprises or things you did not expect along the way? Any particular problem faced, things you had to tackle that you did not expect beforehand?
+
+A surprise and problem we did not expect to find when developing assign1 was the difficulty of the logic behind the feedback of each guess.
+
+We originally thought the logic was going to be simple, just look for any exact matches, any present matches, and any no matches. We had not considered the cases where words had duplicate letters. Finding a solution for more complicated test cases took longer to figure out than we had expected. 
+
+We also were very unsure of the direction to take as we began the assignment. We had no prior knowledge or experience writing tests and were not sure how to begin. We were confused as to what qualified as an appropriate test case and how we should write the cases both in natural language and in code. Thankfully, Venkat aided in this process and provided ample guidance for us to move along at a steady pace. 
+
+Something else that was more unfamiliar to us was using functional-style programming. Though we understood the general idea, we did not initially program with functional style in consideration. However, as we progressed through the assignment, we were able to see how functional-style programming can aid in readability and tends toward code that is well-written and intentional.
+
+Total[100]: 100
+Program pops up the GUI when run[10]:
+Able to play the game[10]:
+All tests pass[10]:
+Test quality[20]:
+Code coverage[10]:
+Quality of design of core logic for tally[10]:
+Quality of design of the play rules[10]:
+Code quality[10]:
+Response to questions[10]:
+

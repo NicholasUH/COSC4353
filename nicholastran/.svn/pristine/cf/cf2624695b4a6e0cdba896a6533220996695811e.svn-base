@@ -1,0 +1,18 @@
+import unittest
+from src.get_perfect_number import get_factors, is_perfect_number_two_times
+
+class TestGetPerfectNumber(unittest.TestCase):
+    def test_canary(self):
+        self.assertTrue(True)
+
+    def test_get_factors_even(self):
+        self.assertEqual([1, 2, 3, 6], get_factors(6))
+
+    def test_get_factors_odd(self):
+        self.assertEqual([1, 5], get_factors(5))
+    
+    def test_is_perfect_number_two_times_even(self):
+        self.assertEqual(True, is_perfect_number_two_times(6, 12))
+    
+    def test_is_perfect_number_two_times_odd(self):
+        self.assertEqual(False, is_perfect_number_two_times(5, 12))

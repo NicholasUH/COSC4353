@@ -1,0 +1,92 @@
+Assign3: Due 11:59PM CT April 5
+
+***Please review the top part of ../hw1/hw1.txt***
+***Your chance of success greatly increases if you start very early. Your chance of failure increases if you start late. Please use as many reviews as you possibly can.***
+
+Please bring forward the practices, techniques, and tools you have learned so far. This includes: 
+Good code quality
+Lightweight design
+Minimum code
+Automated testing                                                         
+Code coverage
+Build files (I created them for you in assign1, but it's your turn now to practice and learn further)
+Change build.sh in your repository to point to assign3 instead of assign3
+
+The Fibonacci series of numbers start with 1, 1, 2, 3, 5, 8, 13, 21, ...
+where values at position 0 and 1 are 1, and values at each position after
+that are a sum of values at the previous two positions.
+
+Write four implementations of a function to compute the Fibonacci number at a given position.
+
+Please start with one implementation at a time rather than rushing through all
+of them at the same time.
+
+The four implementations are described below:
+
+1. An imperative iteration. 
+  Given a position n, loop through totaling values until you reach the value for the given position.
+
+2. A functional iteration. 
+	  Given a position n, loop through totaling values until you reach the value for the given position. Avoid explicit mutability.
+
+3. A simple recursion.
+  Given a position, compute the value at a position using the expression fib(n-1) + fib(n-2).
+
+4. A memoized recursion.
+  Given a position, look up to see if the value has been precomputed and if so return that value. Otherwise, use recursion to compute the value.
+  
+Confirms that the memoized version is faster than the recursive version.
+
+Reuse as much code as possible.
+
+Once you complete coding, please answer the following:
+
+1. What design principles did you use in this assignment? Discuss.
+
+In this assignment, we used SRP and DRY frequently. We also used YAGNI but did not focus on it as heavily.
+
+We used SRP when writing each of the Fibonacci implementations and their tests. Instead of placing all implementations and test in one file, we separated them into four different files. This ensured that each file has a single responsibility as per SRP. 
+
+We also used DRY for validating position and testing the Fibonacci implementations. We needed to validate the position in every one of the Fibonacci implementations. To avoid repeating the code for position validation in every implementation, we created a separate file and function for position validation. We then used a decorator to apply to all Fibonacci implementations. We use a decorator instead of calling the function itself because calling this function in every implementation would still violate DRY. 
+
+To use DRY for our tests, we implemented a base test class from which the test classes for each Fibonacci implementation could inherit. This prevented us from writing the same tests for all four implementations. 
+
+We also used YAGNI by focusing on implementing and testing one Fibonacci implementation fully before proceeding to the next. This ensured that we did not have unnecessary or untested code.
+
+2. Any surprises or things that you did not expect?
+
+We did not expect to have to implement a decorator. Initially, we thought it would be enough to call a function in all the Fibonacci implementations to validate position. We were surprised that this was still in violation of DRY.
+
+We also did not expect to create a base testing class. As we progressed through the assignment it became apparent that we would not simply be able to repeat the tests because of the heavy emphasis on DRY. We were initially unsure how to keep tests DRY. We were concerned about using a getter because looking through Venkat's reading list we'd seen an article advising against it. We were surprised when Venkat instructed us to continue with a getter in the tests.
+
+We were surprised by the number of times Venkat suggested we change the name of the tuple in our functional iterator implementation. We used the letters p, a, s, and x to name this tuple before calling it a pair. We concluded that Venkat was trying to show us that single letter names were not meaningful.
+
+3. What design patterns did you use in this assignment? Discuss.
+
+We used a decorator to validate positions in all Fibonacci implementations. This decorator allowed us to add the position validation to the Fibonacci functions without modifying the functions themselves.
+
+Another design pattern used was designing a template class for our test cases. We defined the test case algorithm that shouldn’t run on its own, but serves as a template for the test subclasses. When the test subclasses for each of the fibonacci functions run, they redefine the get_fibonacci_function() in the base class, resulting in the test cases being run. This pattern made our code more reusable and scalable as the number of fibonacci functions increased.
+
+We also used an anonymous (lambda) functions in the memoized and functional iterative Fibonacci implementations.
+
+We changed the normal recursive fibonacci function to a recursive fibonacci function that could also act as the memoized fibonacci function. We implemented this by defining a lambda in the parameters of the recursive function that determined whether to use the recursive or memoized function, so the code can decide which function to use at runtime. This improved our code by not having to repeat the same logic and not violate DRY.
+
+In the functional interative fibonacci, we used the lambda function as an argument to the reduce function. This allowed us to be more concise and use inline definitions for the functional fibonacci.
+
+The reduce function is an implementation of the reducer pattern. The reducer iteratively computes Fibonacci numbers based on the sum of the previous pair given the intial pair (1, 1). We used the reduce to avoid explicit mutation as per the instructions. 
+
+
+Total [100]: 99
+All tests pass[10]:
+Test quality[10]:
+Coverage [10]:
+Imperative solution[5]:
+Functional solution[10]:
+Recursive solution[5]:
+Memoized solution is DRY[10]:
+Performance tests[10]:
+Code quality[10]:
+Design quality[10]:
+
+Response to questions[10]: -1
+Factory method in tests.
